@@ -1,4 +1,4 @@
-/* Petición SeverMudi */
+/* Petición SeverMudi GruopeSeb*/
 async function serverData ({
     token = undefined,
     sku = undefined
