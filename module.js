@@ -284,3 +284,9 @@ async function serverData ({
     sendDataLayer({sku:skuNumber,nameCompany:info[client].name});
   };
 
+MudiExperience({
+    client:document.querySelector('span.vtex-breadcrumb-1-x-arrow.vtex-breadcrumb-1-x-arrow--1.ph2.c-muted-2 > a').innerHTML,
+    skuNumber: document.querySelector('.vtex-product-identifier-0-x-product-identifier__value').innerHTML,
+    containerBtns:document.querySelector('body > div.render-container.render-route-store-product > div > div.vtex-store__template.bg-base > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div:nth-child(7) > section > div > div > div > div:nth-child(2) > div > div > div > div > div > div > div.swiper-container.swiper-container-initialized.swiper-container-horizontal.vtex-store-components-3-x-productImagesGallerySwiperContainer > div.swiper-wrapper > div.swiper-slide.vtex-store-components-3-x-productImagesGallerySlide.center-all.swiper-slide-active > div'),
+    zIndexModal:1000,
+});
