@@ -1,4 +1,4 @@
-/* Petición SeverMudi GruopeSeb*/
+/* Petición SeverMudi */
 async function serverData ({
     token = undefined,
     sku = undefined
@@ -58,7 +58,8 @@ async function serverData ({
     
     containerPrincipalBtns.querySelector('.btnMudi3D').addEventListener('click',()=>{ createModal3D({link3D:link3D,color:color,zModal:zModal}) },false);
     containerPrincipalBtns.querySelector('.btnMudiAR').addEventListener('click',()=>{ createModalAR({color:color, idCompany:idCompany, sku:sku,zModal:zModal}) },false);
-    fatherContainer.appendChild(containerPrincipalBtns);
+
+    fatherContainer.insertBefore(containerPrincipalBtns , fatherContainer.children[1])
   
     setTimeout(()=>{
       const tool = document.querySelector('.showTooltipInit');
@@ -190,20 +191,6 @@ async function serverData ({
         marca:nameCompany
     });
 
-    /** Evento de intención de compra */
-    document.querySelector('div > div:nth-child(10) > div > div > div:nth-child(2)').addEventListener('click',()=>{
-        dataLayer.push({
-            event:'Evento de intención de compra Mudi',
-            valorMudi:1,
-            sku:sku,
-            categoria:document.querySelector('span.vtex-breadcrumb-1-x-arrow.vtex-breadcrumb-1-x-arrow--2.ph2.c-muted-2 > a').innerHTML,
-            subCategoria:document.querySelector('span.vtex-breadcrumb-1-x-arrow.vtex-breadcrumb-1-x-arrow--3.ph2.c-muted-2 > a') ? document.querySelector('span.vtex-breadcrumb-1-x-arrow.vtex-breadcrumb-1-x-arrow--3.ph2.c-muted-2 > a').innerHTML : 'null',
-            seccion:document.querySelector('span.vtex-breadcrumb-1-x-term.ph2.c-on-base') ? document.querySelector('span.vtex-breadcrumb-1-x-term.ph2.c-on-base').innerHTML : 'null',
-            sistemaOperativo:OSdevice,
-            marca:nameCompany
-        })
-    },false);
-
     /** Evento de interación AR Mudi */
     document.getElementById('btnMudiAR').addEventListener('click',()=>{
         dataLayer.push({
@@ -251,25 +238,25 @@ async function serverData ({
             name: "imusa",
             company: "190",
             token: "693cXRcbvCaktw4SEPvo",
-            colorCompany:"#e9d228"
+            colorCompany:"#fe5000"
         },
         SAMURAI: {
             name: "samurai",
             company: "192",
             token: "dqq7UhqueifQoxhDJhdY",
-            colorCompany:"#e9d228"
+            colorCompany:"#d22630"
         },
         TEFAL: {
             name: "tefal",
             company: "382",
             token: "8SERggbqCM7ZXtUkbAaF",
-            colorCompany:"#63747a"
+            colorCompany:"#ff0000"
         },
         KRUPS: {
             name: "krups",
             company: "381",
             token: "yZibFBji9kpJhdRs9UdS",
-            colorCompany:"#2889e9"
+            colorCompany:"#f38230"
         }
     };
     
@@ -284,9 +271,11 @@ async function serverData ({
     sendDataLayer({sku:skuNumber,nameCompany:info[client].name});
   };
 
+
 MudiExperience({
     client:document.querySelector('span.vtex-breadcrumb-1-x-arrow.vtex-breadcrumb-1-x-arrow--1.ph2.c-muted-2 > a').innerHTML,
     skuNumber: document.querySelector('.vtex-product-identifier-0-x-product-identifier__value').innerHTML,
-    containerBtns:document.querySelector('body > div.render-container.render-route-store-product > div > div.vtex-store__template.bg-base > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div:nth-child(7) > section > div > div > div > div:nth-child(2) > div > div > div > div > div > div > div.swiper-container.swiper-container-initialized.swiper-container-horizontal.vtex-store-components-3-x-productImagesGallerySwiperContainer > div.swiper-wrapper > div.swiper-slide.vtex-store-components-3-x-productImagesGallerySlide.center-all.swiper-slide-active > div'),
-    zIndexModal:1000,
+    containerBtns:document.querySelector('.swiper-container-horizontal.vtex-store-components-3-x-productImagesGallerySwiperContainer'),
+    zIndexModal:20000,
+    zIndexBtns:10
 });
